@@ -7,7 +7,7 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts - Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -36,7 +36,7 @@
             outline: none;
             transition: all 0.2s ease-in-out;
             width: 200px;
-            padding-right: 2rem; /* Space for cursor */
+            padding-right: 2.5rem; /* Space for cursor */
         }
         .typewriter-input:focus {
             border-color: #6366f1; /* Indigo on focus */
@@ -57,26 +57,31 @@
             50% { opacity: 1; }
         }
 
-        /* Slideshow styles */
+        /* Slideshow styles for videos (Webflow prompt) */
         .slideshow-container {
             position: relative;
-            max-width: 800px;
+            max-width: 900px; /* Slightly wider for videos */
             margin: auto;
             overflow: hidden;
-            border-radius: 1rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            background-color: #1e293b;
+            border-radius: 1.5rem; /* More pronounced rounding */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 4px 10px rgba(0, 0, 0, 0.1); /* Deeper shadow */
+            background-color: #1a202c; /* Darker background */
+            transition: all 0.5s ease-in-out; /* Smooth container transition */
         }
         .mySlides {
             display: none;
             text-align: center;
+            animation: fadeIn 1s ease-in-out; /* Fade in animation for slides */
         }
-        .mySlides img {
+        @keyframes fadeIn {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+        .mySlides iframe {
             width: 100%;
-            height: auto;
-            border-radius: 1rem;
-            object-fit: cover;
-            transition: opacity 1s ease-in-out;
+            height: 500px; /* Fixed height for consistent video display */
+            border-radius: 1.25rem; /* Slightly less than container for inner spacing visual */
+            object-fit: cover; /* Ensures video scales nicely */
         }
         /* Next & previous buttons */
         .prev, .next {
@@ -84,24 +89,111 @@
             position: absolute;
             top: 50%;
             width: auto;
-            padding: 16px;
+            padding: 18px 12px; /* Adjusted padding */
             margin-top: -22px;
             color: white;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 24px; /* Larger arrows */
             transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
+            border-radius: 0.5rem; /* Rounded button edges */
             user-select: none;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0,0,0,0.6); /* Slightly more opaque */
+            backdrop-filter: blur(5px); /* Blurred background for buttons */
         }
         /* Position the "next button" to the right */
         .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
+            right: 0.5rem; /* Offset from edge */
+            border-radius: 0.5rem 0 0 0.5rem;
+        }
+        .prev {
+            left: 0.5rem; /* Offset from edge */
+            border-radius: 0 0.5rem 0.5rem 0;
         }
         /* On hover, add a black background with a little more opacity */
         .prev:hover, .next:hover {
-            background-color: rgba(0,0,0,0.8);
+            background-color: rgba(0,0,0,0.9);
+            transform: scale(1.05); /* Slight scale effect on hover */
+        }
+
+        /* Awwwards prompt for description section */
+        .description-awwwards {
+            background: linear-gradient(135deg, #1f2937, #111827); /* Subtle gradient background */
+            border: 1px solid #374151; /* Fine border */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); /* Deeper, softer shadow */
+            position: relative;
+            overflow: hidden;
+            padding: 3rem 2rem; /* More padding */
+            animation: slideInUp 1s ease-out forwards; /* Entry animation */
+        }
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .description-awwwards::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(99, 102, 241, 0.1) 0%, rgba(99, 102, 241, 0) 70%); /* Subtle glowing effect */
+            animation: rotateGradient 15s linear infinite;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        @keyframes rotateGradient {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Animation for the call to action text */
+        .cta-animated {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900; /* Extra bold */
+            font-size: 2.5rem; /* Larger font size */
+            line-height: 1.2;
+            text-align: center;
+            background: linear-gradient(90deg, #a78bfa, #f472b6, #ef4444, #f97316); /* Vibrant rainbow gradient */
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 8s ease infinite alternate, textGlow 2s ease-in-out infinite alternate;
+            padding: 1rem;
+            text-shadow: 0 0 15px rgba(244, 114, 182, 0.7); /* Soft glow */
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 5px rgba(244, 114, 182, 0.4); }
+            50% { text-shadow: 0 0 20px rgba(244, 114, 182, 0.9), 0 0 30px rgba(239, 68, 68, 0.7); }
+            100% { text-shadow: 0 0 5px rgba(244, 114, 182, 0.4); }
+        }
+        /* Ensure aspect ratio for video embeds */
+        .aspect-video {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.75rem;
+        }
+
+        .aspect-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
@@ -120,35 +212,67 @@
 
     <main class="container py-12">
 
-        <!-- Description Section -->
-        <section class="mb-16 text-center bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-700">
+        <!-- Description Section (Awwwards prompt) -->
+        <section class="mb-16 text-center description-awwwards rounded-2xl">
             <p class="text-lg md:text-xl font-medium leading-relaxed text-gray-300">
                 <span class="text-indigo-400 text-2xl font-bold">"</span><span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500 text-3xl md:text-4xl">🎮 GLxySuperNova</span> – The Ultimate Universal Gamer <span class="text-indigo-400 text-2xl font-bold">🌌</span>
                 Welcome to the galaxy of gaming! GLxySuperNova is your go-to destination for exciting videos, powerful gameplay, and next-level graphics. From high-octane open-world adventures to brain-twisting high IQ games, this channel brings the best of all worlds. Whether you're here for the stunning visuals, intense action, or clever strategies, GLxySuperNova delivers it all with style and skill<span class="text-indigo-400 text-2xl font-bold">"</span>
             </p>
         </section>
 
-        <!-- Slideshow Section -->
+        <!-- Video Slideshow Section (Webflow prompt) -->
         <section class="mb-16">
-            <h2 class="text-3xl font-bold text-center mb-8 text-white">Featured Moments</h2>
+            <h2 class="text-3xl font-bold text-center mb-8 text-white">Featured Gameplays</h2>
             <div class="slideshow-container">
                 <div class="mySlides">
-                    <img src="https://i.ytimg.com/vi/QH37Yeol2CE/sddefault.jpg" alt="Gaming Screenshot 1" class="rounded-xl">
+                    <div class="aspect-video">
+                        <iframe src="https://www.youtube.com/embed/b_lBIyHf7Pc?si=6P6FkcTT2Fh8onwH" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
                 </div>
                 <div class="mySlides">
-                    <img src="https://i.ytimg.com/vi/nSzMGaeSszA/sddefault.jpg" alt="Gaming Screenshot 2" class="rounded-xl">
+                    <div class="aspect-video">
+                        <iframe src="https://www.youtube.com/embed/ggbhaRqBpTc?si=gjnBAdjXnF5HMKP8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
                 </div>
                 <div class="mySlides">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ3kce6gKQhxcpL0c0sj5V-AOalfNC8IPNwQJQbzceug&s" alt="Gaming Screenshot 3" class="rounded-xl">
+                    <div class="aspect-video">
+                        <iframe src="https://www.youtube.com/embed/4aK850XWheA?si=Ht8FRfPL9ZPI58Gk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
                 </div>
                 <div class="mySlides">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHia0MKgVY-34CPcx4QG5RymiuP8Xh8535-z1ME1TSUA&s" alt="Gaming Screenshot 4" class="rounded-xl">
+                    <div class="aspect-video">
+                        <iframe src="https://www.youtube.com/embed/XM8vQ4mwJSE?si=HkM8cvmZ8kcTmBUm" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
                 </div>
                 <div class="mySlides">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2VjJesMLdJ8XMJFmP10KgU-6IbTC5gQ5LmjRHLWFMHg&s" alt="Gaming Screenshot 5" class="rounded-xl">
+                    <div class="aspect-video">
+                        <iframe src="https://www.youtube.com/embed/gV1Seh50HeM?si=_WyHcVSk_PFDiKfQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
                 </div>
                 <div class="mySlides">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH2LK1w--DTOd0jetP09cd8cw3SoYrkbN5vVgc1kjo2w&s" alt="Gaming Screenshot 6" class="rounded-xl">
+                    <div class="aspect-video">
+                        <iframe src="https://www.youtube.com/embed/S6m_KTTc1fs?si=Ttj1yLK1fUbQjbXq" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="mySlides">
+                    <div class="aspect-video">
+                        <iframe src="https://www.youtube.com/embed/QejIFKOm3KU?si=5dOAZE47CXge3wG4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="mySlides">
+                    <div class="aspect-video">
+                        <iframe src="https://www.youtube.com/embed/1B-d7QdDr7c?si=BTATOBCtWCVpSEmS" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="mySlides">
+                    <div class="aspect-video">
+                        <iframe src="https://www.youtube.com/embed/tDf5TKQigOU?si=dpOYwRuIp8k7X9fn" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="mySlides">
+                    <div class="aspect-video">
+                        <iframe src="https://www.youtube.com/embed/qI0HU9ehfcs?si=DSpY7DcU_3jIQai7" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
                 </div>
 
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -156,36 +280,36 @@
             </div>
         </section>
 
-        <!-- Video Section -->
+        <!-- Other Videos Section -->
         <section class="mb-16">
-            <h2 class="text-3xl font-bold text-center mb-8 text-white">Latest Videos & Reels</h2>
+            <h2 class="text-3xl font-bold text-center mb-8 text-white">More Videos & Reels</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- YouTube Video 1 -->
                 <div class="bg-gray-800 p-4 rounded-xl shadow-md transform hover:scale-105 transition-transform duration-300">
                     <h3 class="text-xl font-semibold mb-3 text-indigo-300">TOYOTA SUPRA</h3>
-                    <div class="aspect-w-16 aspect-h-9 relative">
+                    <div class="aspect-video">
                         <iframe class="w-full h-full rounded-lg" src="https://www.youtube.com/embed/lBZCJNwoU1U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
                 <!-- YouTube Video 2 -->
                 <div class="bg-gray-800 p-4 rounded-xl shadow-md transform hover:scale-105 transition-transform duration-300">
                     <h3 class="text-xl font-semibold mb-3 text-indigo-300">MY NEW BMW</h3>
-                    <div class="aspect-w-16 aspect-h-9 relative">
+                    <div class="aspect-video">
                         <iframe class="w-full h-full rounded-lg" src="https://www.youtube.com/embed/YlgHwQIrqaA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
                 <!-- Instagram Reel 1 (Linked, as direct embed is complex for single file) -->
                 <div class="bg-gray-800 p-4 rounded-xl shadow-md transform hover:scale-105 transition-transform duration-300">
                     <h3 class="text-xl font-semibold mb-3 text-indigo-300">A Noob Squad (Instagram)</h3>
-                    <a href="https://www.instagram.com/reel/CtKUHfFos3B/?igsh=MTg4aGRidzJxbWk4ZA==" target="_blank" rel="noopener noreferrer" class="block w-full h-48 bg-gray-700 flex items-center justify-center rounded-lg text-gray-400 hover:text-indigo-400 transition-colors duration-300">
+                    <a href="https://www.instagram.com/reel/CtKUHfFos3B/?igsh=MTg4aGRidzJxbWk4ZA==" target="_blank" rel="noopener noreferrer" class="block w-full h-48 bg-gray-700 flex items-center justify-center rounded-lg text-gray-400 hover:text-pink-500 transition-colors duration-300">
                         View on Instagram
                         <svg class="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M7.8 2h8.4C20.4 2 22 3.6 22 7.8v8.4c0 4.2-1.6 5.8-5.8 5.8H7.8C3.6 22 2 20.4 2 16.2V7.8C2 3.6 3.6 2 7.8 2zm-.2 2A4 4 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.2 20h8.8c1.59 0 3.2-1.61 3.2-3.2V7.2C20 5.61 18.39 4 16.8 4H7.6zm-.4 1.4h.01c.78 0 1.4.62 1.4 1.4s-.62 1.4-1.4 1.4-1.4-.62-1.4-1.4.62-1.4 1.4-1.4zm5.5 2.1c2.4 0 4.2 1.8 4.2 4.2S15.5 16.9 13.1 16.9 8.9 15.1 8.9 12.7 10.7 8.5 13.1 8.5zm0 1.9c-1.38 0-2.4 1.02-2.4 2.4s1.02 2.4 2.4 2.4 2.4-1.02 2.4-2.4-1.02-2.4-2.4-2.4z"></path></svg>
                     </a>
                 </div>
                 <!-- Instagram Reel 2 (Linked, as direct embed is complex for single file) -->
                 <div class="bg-gray-800 p-4 rounded-xl shadow-md transform hover:scale-105 transition-transform duration-300">
-                    <h3 class="text-xl font-semibold mb-3 text-indigo-300">Custom (Instagram)</h3>
-                    <a href="https://www.instagram.com/reel/CtKUHfFos3B/?igsh=MTg4aGRidzJxbWk4ZA==" target="_blank" rel="noopener noreferrer" class="block w-full h-48 bg-gray-700 flex items-center justify-center rounded-lg text-gray-400 hover:text-indigo-400 transition-colors duration-300">
+                    <h3 class="text-xl font-semibold mb-3 text-indigo-300">Custom room (Instagram)</h3>
+                    <a href="https://www.instagram.com/reel/CtKUHfFos3B/?igsh=MTg4aGRidzJxbWk4ZA==" target="_blank" rel="noopener noreferrer" class="block w-full h-48 bg-gray-700 flex items-center justify-center rounded-lg text-gray-400 hover:text-pink-500 transition-colors duration-300">
                         View on Instagram
                         <svg class="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M7.8 2h8.4C20.4 2 22 3.6 22 7.8v8.4c0 4.2-1.6 5.8-5.8 5.8H7.8C3.6 22 2 20.4 2 16.2V7.8C2 3.6 3.6 2 7.8 2zm-.2 2A4 4 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.2 20h8.8c1.59 0 3.2-1.61 3.2-3.2V7.2C20 5.61 18.39 4 16.8 4H7.6zm-.4 1.4h.01c.78 0 1.4.62 1.4 1.4s-.62 1.4-1.4 1.4-1.4-.62-1.4-1.4.62-1.4 1.4-1.4zm5.5 2.1c2.4 0 4.2 1.8 4.2 4.2S15.5 16.9 13.1 16.9 8.9 15.1 8.9 12.7 10.7 8.5 13.1 8.5zm0 1.9c-1.38 0-2.4 1.02-2.4 2.4s1.02 2.4 2.4 2.4 2.4-1.02 2.4-2.4-1.02-2.4-2.4-2.4z"></path></svg>
                     </a>
@@ -193,9 +317,9 @@
             </div>
         </section>
 
-        <!-- Call to Action -->
-        <section class="mb-16 text-center">
-            <p class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 tracking-wide leading-tight">
+        <!-- Call to Action with Animation -->
+        <section class="mb-16">
+            <p class="cta-animated">
                 "Subscribe and join the SuperNova squad – where gaming goes beyond limits"
             </p>
         </section>
@@ -206,24 +330,24 @@
     <footer class="bg-gray-900 py-8 px-6 text-center rounded-t-3xl shadow-lg">
         <h3 class="text-2xl font-bold text-white mb-6">Connect with GLxySuperNova</h3>
         <div class="flex flex-wrap justify-center items-center gap-6">
-            <a href="https://www.instagram.com/reel/CtKUHfFos3B/?igsh=MTg4aGRidzJxbWk4ZA==" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-pink-500 transition-colors duration-300 text-lg flex items-center">
-                <span class="mr-2 text-2xl">📸</span>
+            <a href="https://www.instagram.com/reel/CtKUHfFos3B/?igsh=MTg4aGRidzJxbWk4ZA==" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-pink-500 transition-colors duration-300 text-lg flex items-center group">
+                <span class="mr-2 text-2xl group-hover:animate-bounce">📸</span>
                 <span>Check out my latest Instagram Reel and don’t forget to subscribe on YouTube for more!</span>
             </a>
-            <a href="https://youtube.com/@shinovaa7613?si=YEYrInceTkLxmITy" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-red-500 transition-colors duration-300 text-lg flex items-center">
-                <span class="mr-2 text-2xl">📺</span>
+            <a href="https://youtube.com/@shinovaa7613?si=YEYrInceTkLxmITy" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-red-500 transition-colors duration-300 text-lg flex items-center group">
+                <span class="mr-2 text-2xl group-hover:animate-pulse">📺</span>
                 <span>🔥 New content just dropped! Watch on Instagram & subscribe to my YouTube for more fire drops.</span>
             </a>
-            <a href="https://www.instagram.com/reel/CtKUHfFos3B/?igsh=MTg4aGRidzJxbWk4ZA==" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-pink-500 transition-colors duration-300 text-lg flex items-center">
-                <span class="mr-2 text-2xl">👉</span>
+            <a href="https://www.instagram.com/reel/CtKUHfFos3B/?igsh=MTg4aGRidzJxbWk4ZA==" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-pink-500 transition-colors duration-300 text-lg flex items-center group">
+                <span class="mr-2 text-2xl group-hover:rotate-12">👉</span>
                 <span>Love anime edits? Don’t miss this one Insta Reel | YouTube Channel</span>
             </a>
-            <a href="https://youtube.com/@shinovaa7613?si=YEYrInceTkLxmITy" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-red-500 transition-colors duration-300 text-lg flex items-center">
-                <span class="mr-2 text-2xl">🚀</span>
+            <a href="https://youtube.com/@shinovaa7613?si=YEYrInceTkLxmITy" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-red-500 transition-colors duration-300 text-lg flex items-center group">
+                <span class="mr-2 text-2xl group-hover:scale-110">🚀</span>
                 <span>Support the grind — watch the reel & hit that sub button💯</span>
             </a>
-            <a href="https://www.instagram.com/reel/CtKUHfFos3B/?igsh=MTg4aGRidzJxbWk4ZA==" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-pink-500 transition-colors duration-300 text-lg flex items-center">
-                <span class="mr-2 text-2xl">👇</span>
+            <a href="https://www.instagram.com/reel/CtKUHfFos3B/?igsh=MTg4aGRidzJxbWk4ZA==" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-pink-500 transition-colors duration-300 text-lg flex items-center group">
+                <span class="mr-2 text-2xl group-hover:animate-ping">👇</span>
                 <span>Tap in for edits that hit different: 📸 Insta | 📺 YouTube</span>
             </a>
         </div>
@@ -234,7 +358,7 @@
         // Typewriter Effect for Search Bar
         const searchInput = document.getElementById('search-input');
         const cursor = document.getElementById('cursor');
-        const phrases = ["Search videos...", "Find your game...", "Explore galaxies..."];
+        const phrases = ["Search videos...", "Find your game...", "Explore galaxies...", "GLxySuperNova search"];
         let phraseIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -299,10 +423,11 @@
             autoSlideIndex++;
             if (autoSlideIndex > slides.length) {autoSlideIndex = 1}
             slides[autoSlideIndex-1].style.display = "block";
-            setTimeout(autoShowSlides, 5000); // Change image every 5 seconds
+            setTimeout(autoShowSlides, 5000); // Change slide every 5 seconds
         }
 
         document.addEventListener('DOMContentLoaded', autoShowSlides); // Start automatic slideshow on load
     </script>
 </body>
 </html>
+
